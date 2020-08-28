@@ -124,10 +124,6 @@
 	\begin{enumerate}
 		\item Redacta el siguiente código, genera el código ensamblador y explica en qué parte (del código
 ensamblador) se definen las variables c y m. (2 puntos).
-
-            
-		
-		Solución \\
 		
         
 \begin{lstlisting}[language={[x86masm]Assembler}, basicstyle=\small]    
@@ -158,7 +154,7 @@ ensamblador) se definen las variables c y m. (2 puntos).
 		\item Redacta el siguiente código, genera el código ensamblador y explica en qué parte (del código
 ensamblador) se define la división entre 8. (2 puntos).
 
-Solución \\
+
 \begin{lstlisting}[language={[x86masm]Assembler}, basicstyle=\small]	
 	
 	.LFE0:
@@ -185,13 +181,23 @@ Solución \\
 		\item Redacta el siguiente código, genera el código ensamblador y explica en qué parte (del código
 ensamblador) se define la división entre 4. (2 puntos).
 
-		Solución \\
-		.................
+
+\begin{lstlisting}[language={[x86masm]Assembler}, basicstyle=\small]
+	cmovs	%edx, %eax
+	sarl	$2, %eax
+ \end{lstlisting}
+
+
+
+
+
 		\item  Redacta el siguiente código, genera el código ensamblador y explica en qué parte (del código
 ensamblador) se define la división entre 2. (2 puntos).
        
-       Solución \\
-		.................
+\begin{lstlisting}[language={[x86masm]Assembler}, basicstyle=\small]
+	addl	%edx, %eax
+	sarl	%eax
+ \end{lstlisting}
 		\item  Redacta el siguiente código, genera el código ensamblador y explica: (4 puntos):
 		
 		•	En qué parte del código ensamblador se define la función div4.
@@ -253,7 +259,9 @@ idivl	12(%ebp)
 \end{itemize}
 
 
+\item Github
 
+https://github.com/Robertohg/Compiladores
 
 	\end{enumerate}
 
