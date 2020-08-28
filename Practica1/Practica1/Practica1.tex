@@ -1,0 +1,268 @@
+%package list
+\documentclass{article}
+\usepackage[top=3cm, bottom=3cm, outer=3cm, inner=3cm]{geometry}
+\usepackage{graphicx}
+\usepackage{url}
+%\usepackage{cite}
+\usepackage{hyperref}
+\usepackage{array}
+%\usepackage{multicol}
+\newcolumntype{x}[1]{>{\centering\arraybackslash\hspace{0pt}}p{#1}}
+\usepackage{natbib}
+\usepackage{pdfpages}
+\usepackage{multirow}
+\usepackage{multirow}
+\usepackage[normalem]{ulem}
+\useunder{\uline}{\ul}{}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\csemail}{vmachacaa@ulasalle.edu.pe}
+\newcommand{\csdocente}{MSc. Vicente Enrique Machaca Arceda}
+\newcommand{\cscurso}{Compiladores}
+\newcommand{\csuniversidad}{Universidad La Salle}
+\newcommand{\csescuela}{Escuela Profesional de Ingeniería de Software}
+\newcommand{\cspracnr}{01}
+\newcommand{\cstema}{Introducción}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\usepackage[english,spanish]{babel}
+\usepackage[utf8]{inputenc}
+\AtBeginDocument{\selectlanguage{spanish}}
+\renewcommand{\figurename}{Figura}
+\renewcommand{\refname}{Referencias}
+\renewcommand{\tablename}{Tabla} %esto no funciona cuando se usa babel
+\AtBeginDocument{%
+	\renewcommand\tablename{Tabla}
+}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\setlength{\headheight}{30pt}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{1pt}
+\fancyhead[L]{\raisebox{-0.2\height}{\includegraphics[width=3cm]{img/logo_salle}}}
+\fancyhead[C]{}
+\fancyhead[R]{\fontsize{7}{7}\selectfont	\csuniversidad \\ \csescuela \\ \textbf{\cscurso} }
+\fancyfoot[L]{MSc. Vicente Machaca}
+\fancyfoot[C]{\cscurso}
+\fancyfoot[R]{Página \thepage}
+
+\usepackage{listings}
+\usepackage{xcolor} % for setting colors
+
+% set the default code style
+\lstset{
+    frame=tb, % draw a frame at the top and bottom of the code block
+    tabsize=4, % tab space width
+    showstringspaces=false, % don't mark spaces in strings
+    numbers=left, % display line numbers on the left
+    commentstyle=\color{green}, % comment color
+    keywordstyle=\color{blue}, % keyword color
+    stringstyle=\color{red} % string color
+}
+
+
+
+
+
+
+\begin{document}
+	
+	\vspace*{10px}
+	
+	\begin{center}	
+		\fontsize{17}{17} \textbf{ Práctica \cspracnr}
+	\end{center}
+	%\centerline{\textbf{\underline{\Large Título: Informe de revisión del estado del arte}}}
+	%\vspace*{0.5cm}
+	
+
+	\begin{table}[h]
+		\begin{tabular}{|x{4.7cm}|x{4.8cm}|x{4.8cm}|}
+			\hline 
+			\textbf{DOCENTE} & \textbf{CARRERA}  & \textbf{CURSO}   \\
+			\hline 
+			\csdocente & \csescuela & \cscurso    \\
+			\hline 
+		\end{tabular}
+	\end{table}	
+	
+	
+	\begin{table}[h]
+		\begin{tabular}{|x{4.7cm}|x{4.8cm}|x{4.8cm}|}
+			\hline 
+			\textbf{PRÁCTICA} & \textbf{TEMA}  & \textbf{DURACIÓN}   \\
+			\hline 
+			\cspracnr & \cstema & 3 horas   \\
+			\hline 
+		\end{tabular}
+	\end{table}
+	
+	
+	\section{Datos de los estudiantes}
+	\begin{itemize}
+		\item Grupo: 4
+		\item Integrantes: 
+		\begin{itemize}
+			
+			\item Gabriela Pacco Huamani
+			\item Augusto Delgado Bravo
+			\item Roberto Heredia Garland
+		\end{itemize}		
+	\end{itemize}
+	
+	
+	
+
+	
+	\section{Ejercicios}\label{sec:ejercicios}
+	\begin{enumerate}
+		\item Redacta el siguiente código, genera el código ensamblador y explica en qué parte (del código
+ensamblador) se definen las variables c y m. (2 puntos).
+
+            
+		
+		Solución \\
+		
+        
+\begin{lstlisting}[language={[x86masm]Assembler}, basicstyle=\small]    
+; 1 Aqui se define la variable "m".
+     .LFB0:
+	.cfi_startproc
+	endbr64
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register 6
+	movl	$11148, -4(%rbp)
+	movl	$0, %eax
+	popq	%rbp
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+	;Aqui se define  la  variable c:
+	.LC0:
+	.string	"abcdef"
+	.text
+	.globl	main
+	.type	main, @function
+ \end{lstlisting}	
+	
+		
+		\item Redacta el siguiente código, genera el código ensamblador y explica en qué parte (del código
+ensamblador) se define la división entre 8. (2 puntos).
+
+Solución \\
+\begin{lstlisting}[language={[x86masm]Assembler}, basicstyle=\small]	
+	
+	.LFE0:
+	.size	main, .-main
+	.ident	"GCC: (Ubuntu 9.3.0-10ubuntu2) 9.3.0"
+	.section	.note.GNU-stack,"",@progbits
+	.section	.note.gnu.property,"a"
+	.align 8
+	.long	 1f - 0f
+	.long	 4f - 1f
+	.long	 5
+0:
+	.string	 "GNU"
+1:
+	.align 8
+	.long	 0xc0000002
+	.long	 3f - 2f
+2:
+	.long	 0x3
+3:
+	.align 8
+4:
+ \end{lstlisting}
+		\item Redacta el siguiente código, genera el código ensamblador y explica en qué parte (del código
+ensamblador) se define la división entre 4. (2 puntos).
+
+		Solución \\
+		.................
+		\item  Redacta el siguiente código, genera el código ensamblador y explica en qué parte (del código
+ensamblador) se define la división entre 2. (2 puntos).
+       
+       Solución \\
+		.................
+		\item  Redacta el siguiente código, genera el código ensamblador y explica: (4 puntos):
+		
+		•	En qué parte del código ensamblador se define la función div4.
+	\begin{lstlisting}[language={[x86masm]Assembler}, basicstyle=\small]
+	Ltext0:
+	.cfi_sections	.debug_frame
+	.globl	__Z4div4i
+	.def	__Z4div4i;	.scl	2;	.type	32;	.endef
+	  \end{lstlisting}	
+•	En qué parte del código ensamblador se invoca a la función div4.\newline
+\begin{lstlisting}[language={[x86masm]Assembler}, basicstyle=\small]
+	call	__Z4div4i
+ \end{lstlisting}	
+•	En qué parte del código ensamblador dentro de la función div4 se procesa la división.
+\begin{lstlisting}[language={[x86masm]Assembler}, basicstyle=\small]
+	movl	8(%ebp), %eax
+	leal	3(%eax), %edx
+	testl	%eax, %eax
+	cmovs	%edx, %eax
+	sarl	$2, %eax
+\end{lstlisting}
+
+
+    	\item  Redacta el siguiente código, genera el código ensamblador y explica: (4 puntos):
+		
+		•	En qué parte del código ensamblador se define la función div.
+\begin{lstlisting}[language={[x86masm]Assembler}, basicstyle=\small]
+	Ltext0:
+	.cfi_sections	.debug_frame
+	.globl	__Z3divii
+	.def	__Z3divii;	.scl	2;	.type	32;	.endef
+	 \end{lstlisting}
+•	En qué parte del código ensamblador se invoca a la función div.
+\begin{lstlisting}[language={[x86masm]Assembler}, basicstyle=\small]
+call	__Z3divii
+\end{lstlisting}
+•	En qué parte del código ensamblador dentro de la función div se procesa la división.
+\begin{lstlisting}[language={[x86masm]Assembler}, basicstyle=\small]
+idivl	12(%ebp)
+\end{lstlisting}
+
+
+ 	 \item De las preguntas anteriores, se ha generado código, por cada función, ambas dividen entre 4,
+pero difieren un poco en su implementación. Investigue a qué se debe dicha diferencia y comente cuáles podrían ser las consecuencias. (4 puntos)
+
+\begin{itemize}
+    \item En la funcion $div$ se utiliza $idivl$ la cual es una instruccion para dividir signed numbers, por eso se utiliza cltd (lo cual convierte longs a dobuble longs
+\begin{lstlisting}[language={[x86masm]Assembler}, basicstyle=\small]
+cltd
+idivl	12(%ebp)
+\end{lstlisting}
+
+\item En cambio en $div4$ se utiliza una operacion bitwise al dividir (Shift Arithmetic Right)
+
+
+\begin{lstlisting}[language={[x86masm]Assembler}, basicstyle=\small]
+	sarl	$2, %eax
+\end{lstlisting}
+\end{itemize}
+
+
+
+
+	\end{enumerate}
+
+
+	
+	%\clearpage
+	%\bibliographystyle{apalike}
+	%\bibliographystyle{IEEEtranN}
+	%\bibliography{bibliography}
+		
+	
+\end{document}
